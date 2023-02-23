@@ -4,19 +4,17 @@ services:
     build: docker/apache
     container_name: ${PROJECT_NAME}_apache
     volumes:
-# les fichiers du site seront à placer dans le dossier web suivi du nom du projet
+    # les fichiers du site seront à placer dans le dossier web suivi du nom du projet
      - ./web_${PROJECT_NAME}:${PROJECT_PATH}:cached
      - ./docker/apache/sites_enabled:/etc/apache2/sites_enabled
      - ./docker/php/custom-php.ini:/use/local/etc/php/conf.d/custom-php.ini
-#     - ./docker/apache/conf:/etc/apache2/conf
+#    - ./docker/apache/conf:/etc/apache2/conf
     depends_on:
      - postgres
     ports:
      - "8082:80"
-#     - "443:443"
   
   postgres:
-    build: docker/postgres
     container_name: ${PROJECT_NAME}_postgres
     image: postgres
     environment:
@@ -57,6 +55,5 @@ networks:
 
 # Names our volume
 volumes:
-  db_data:
   postgres:
   pgadmin:
