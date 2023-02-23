@@ -50,7 +50,3 @@ RUN echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)"
 
 #Create phpinfo
 RUN echo "<?php phpinfo(); ?>" >> /var/www/html/phpinfo.php
-
-#Git clone
-RUN git clone https://github.com/RomainMILLAN/SAE-4.01-Waps
-
