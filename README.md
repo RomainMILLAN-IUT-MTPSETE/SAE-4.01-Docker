@@ -88,13 +88,15 @@ User: postgres
 Password: changeme
 Database: postgres
 ```
+
 <br/>
-Une fois arriver sur le serveur de Base de Données il vous suffira de crée un nouvel utilisateur et une nouvelle base de données.
 
 ### PostGIS
 Pour la SAÉ, il vous est demander d'installer l'extension Postgres qui se nomme PostGIS, pour faire ceci il vous suffit de suivre les instruction suivantes:
 
-1/ Connecter vous au bash de la VM postgres (`docker exec -it <ID_POSTGRES> bash`).
-2/ Mettre à jour la machine (`apt-get update` et `apt-get upgrade`)
-3/ Installer PostGis avec la commande `apt-get install postgis`
-4/
+1/ Connecter vous au bash de la VM postgres (`docker exec -it <ID_POSTGRES> bash`).<br/>
+2/ Mettre à jour la machine (`apt-get update` et `apt-get upgrade`)<br/>
+3/ Installer PostGis avec la commande `apt-get install postgis`<br/>
+4/ Connecter vous avec DBeaver ou Datagrip est crée vos Base de Données/Table (*A la création de table si vous devez utiliser Postgis, mettez `CREATE EXTENSION postgis;` avant le `CREATE TABLE ...`*)<br/>
+5/ Il vous suffit alors d'inserer vos tuples !<br/>
+*PS: Pour quitter le prompt de PostgreSQL, il vous suffit d'écrire `exit`*
