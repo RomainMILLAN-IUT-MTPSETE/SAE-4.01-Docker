@@ -2,6 +2,11 @@
 Ce dépôt a été créé dans le but de mettre en place une architecture complète sous Docker pour le projet SAE 4.01 du département informatique de l'IUT de Montpellier/Sète. <br/>
 Ce travail est fondé sur les travaux antérieurs de **Cyrille NADAL**, professeur à l'IUT de Montpellier/Sète.
 
+<br/>
+
+Pour tous problèmes avec l'exécution du projet, merci d'ouvrir une **issue** ou de me contacter en **message privée** sur discord (`Wabezeter#3701`)
+
+<br/>
 
 ## Parties
    - 1/ Informations importantes
