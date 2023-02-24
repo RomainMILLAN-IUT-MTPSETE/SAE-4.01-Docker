@@ -5,9 +5,9 @@ FROM php:8.2-apache
 RUN apt-get update && apt-get install -y nano
 RUN apt-get install -y  git
 # renseignez votre mail
-RUN git config --global user.email "hello@romainmillan.fr"
+RUN git config --global user.email "<YOUR_MAIL>"
 # renseignez votre nom de user
-RUN git config --global user.name "RomainM"
+RUN git config --global user.name "<YOUR_NAME>"
 #RUN apt-get install -y wget
 #RUN wget https://get.symfony.com/cli/installer -O - | bash
 #RUN mv /root/.symfony/bin/symfony /usr/local/bin/symfony

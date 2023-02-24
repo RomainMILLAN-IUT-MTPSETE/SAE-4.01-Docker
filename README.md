@@ -46,7 +46,7 @@ Suite à votre installation de Docker, vous pouvez cloner le dépôt et suivre l
 ## 3/ Configuration : 
 Pour la configuration et l'installation de Docker, il vous faut ensuite configurer le fichier .env. <br/>
 Pour cela, vous devrez remplacer les noms donnés par défaut <VOTRE_NOM> par vos noms de projets. <br/>
-Exemple: DB_NAME=romain
+> Exemple: DB_NAME=romain
 
 <br/>
 Fichier .env:
@@ -55,6 +55,18 @@ Fichier .env:
 DB_NAME=<VOTRE_NOM>
 PROJECT_NAME=<VOTRE_NOM>
 PROJECT_PATH=/var/www/html
+```
+
+<br/>
+
+Suite à ça, il faut modifier l'email et le nom de git dans le fichier Dokerfile de apache `docker/apache/Dockerfile`.
+> Exemple: <YOUR_MAIL> => xxx@gmail.com
+> Exemple: <YOUR_NAME> => Romain
+
+Fichier Dockerfile:
+```
+RUN git config --global user.email "<YOUR_MAIL>"
+RUN git config --global user.name "<YOUR_NAME>"
 ```
 
 <br/>
