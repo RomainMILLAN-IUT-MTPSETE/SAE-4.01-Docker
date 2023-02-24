@@ -1,6 +1,6 @@
 # SAE 4.01 - Docker
-Ce dépôt a été créé pour créer toute une architecture sous Docker pour la SAE 4.01 du BUT Informatique de l'IUT de Montpellier/Sète.
-Ce travail est basé sur le travail de Cyrille NADAL, professeur à l'IUT de Montpellier/Sète.
+Ce dépôt a été créé dans le but de mettre en place une architecture complète sous Docker pour le projet SAE 4.01 du département informatique de l'IUT de Montpellier/Sète. <br/>
+Ce travail est fondé sur les travaux antérieurs de **Cyrille NADAL**, professeur à l'IUT de Montpellier/Sète.
 
 
 ## Parties
@@ -40,7 +40,7 @@ Et vous pouvez télécharger et installer 'Docker Desktop': https://desktop.dock
 Vous pouvez suivre le tutoriel suivant: https://docs.docker.com/desktop/install/linux-install/ <br/>
 
 Suite à votre installation de Docker, vous pouvez cloner le dépôt et suivre la prochaine étape.
-<br/>
+
 <br/>
 
 ## 3/ Configuration : 
@@ -73,6 +73,7 @@ Pour comprendre comment fonctionne Docker, il faut connaître les commandes esse
 `docker compose build`: Permet de build le dossier courant<br/>
 `docker compose up -d`: Permet d'exécuter tous les containers du dossier courant<br/>
 `docker compose stop`: Permet d'arrêter tous les containers
+
 <br/><br/>
 
 ### Instructions
@@ -85,10 +86,13 @@ Ensuite vous pouvez suivre les instructions suivantes pour exécuter vos contain
 `docker ps` *et récupérer l'identifiant du container Apache*<br/>
 `docker exec -it <IDENTIFIANT> bash`<br/>
 Ensuite il vous suffit d'utiliser un linux normal pour clone votre repository dans le dossier `/var/www/html` et vous rendre sur l'adresse `127.0.0.1:8082`<br/>
+
 <br/>
 
 ## 5/ PostgreSQL & Postgis
-Maintenant que votre serveur Apache est fonctionnel il vous faut que vous installiez votre serveur de base de données sur le container postgres !<br/>
+Maintenant que votre serveur Apache est fonctionnel il vous faut que vous installiez votre serveur de base de données sur le container postgres !
+
+<br/>
 
 ### Connexion à PostgreSQL
 
@@ -105,6 +109,8 @@ Dans `Host name/address` mettez l'addresse IP que vous avez récupérer plus tô
 Enfin dans `Username` et `Password` mettez vos identifiant de connection à PostgreSQL <br/>
 Voila vous êtes sur l'interface administrateur de PostgreSQL <br/>
 (*PS: Les identifiants de base de PostgreSQL sont `postgres:changeme` *)
+
+<br/>
 
 #### DBeaver et Datagrip
 Pour la connexion à PostgreSQL, vous devez ouvrir DBeaver ou Datagrip et rentrer les identifiants de connexion suivants:
