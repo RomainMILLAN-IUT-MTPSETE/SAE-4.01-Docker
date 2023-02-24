@@ -59,8 +59,8 @@ PROJECT_PATH=/var/www/html
 
 <br/>
 
-Suite à ça, il faut modifier l'email et le nom de git dans le fichier Dokerfile de apache `docker/apache/Dockerfile`.
-> Exemple: <YOUR_MAIL> => xxx@gmail.com
+Suite à cela, il est nécessaire de modifier l'email et le nom Git dans le fichier Dockerfile d'Apache (`docker/apache/Dockerfile`).
+> Exemple: <YOUR_MAIL> => xxx@gmail.com <br/>
 > Exemple: <YOUR_NAME> => Romain
 
 Fichier Dockerfile:
@@ -96,7 +96,7 @@ Ensuite vous pouvez suivre les instructions suivantes pour exécuter vos contain
 `docker compose build`<br/>
 `docker compose up -d`<br/>
 `docker ps` *et récupérer l'identifiant du container Apache*<br/>
-`docker exec -it <IDENTIFIANT> bash`<br/>
+`docker exec -it <IDENTIFIANT> bash` *Avec l'identifiant récupérer juste avant* <br/>
 Ensuite il vous suffit d'utiliser un linux normal pour clone votre repository dans le dossier `/var/www/html` et vous rendre sur l'adresse `127.0.0.1:8082`<br/>
 
 <br/>
