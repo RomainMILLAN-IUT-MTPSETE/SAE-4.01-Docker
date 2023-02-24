@@ -9,7 +9,6 @@ Ce travail est fondé sur les travaux antérieurs de **Cyrille NADAL**, professe
    - 3/ Configuration
    - 4/ Executer les containers
    - 4/ PostgreSQL & SIG
-   - 5/ Test
 
 <br/>
 
@@ -108,6 +107,18 @@ Maintenant que votre serveur Apache est fonctionnel il vous faut que vous instal
 
 ### Connexion à PostgreSQL
 
+### PostGIS
+Pour la SAÉ, il vous est demandé d'installer l'extension PostGIS, pour faire ceci il vous suffit de suivre les instructions suivantes:
+
+1/ Connecter vous au bash de la VM postgres (`docker exec -it <ID_POSTGRES> bash`).<br/>
+2/ Mettre à jour la machine (`apt-get update` et `apt-get upgrade`)<br/>
+3/ Installer PostGIS avec la commande `apt-get install postgis`<br/>
+4/ Connectez vous avec DBeaver ou Datagrip est créée vos Base de Données/Table (*A la création de table si vous devez utiliser Postgis, mettez `CREATE EXTENSION postgis;` avant le `CREATE TABLE ...`*)<br/>
+5/ Il vous suffit alors d'insérer vos tuples ! <br/>
+*PS: Pour quitter le prompt de PostgreSQL, il vous suffit d'écrire `exit`*
+
+<br/>
+
 #### PGAdmin
 Vous pouvez utiliser PGAdmin, un conteneur a déjà été mis en place pour permettre l'accès à PGAdmin. <br/>
 Pour cela, ouvrez votre navigateur et allez à l'adresse `127.0.0.1:5050`. <br/>
@@ -135,14 +146,6 @@ Password: changeme
 Database: postgres
 ```
 
-<br/>
+<br/><br/><br/>
 
-### PostGIS
-Pour la SAÉ, il vous est demandé d'installer l'extension PostGIS, pour faire ceci il vous suffit de suivre les instructions suivantes:
-
-1/ Connecter vous au bash de la VM postgres (`docker exec -it <ID_POSTGRES> bash`).<br/>
-2/ Mettre à jour la machine (`apt-get update` et `apt-get upgrade`)<br/>
-3/ Installer PostGIS avec la commande `apt-get install postgis`<br/>
-4/ Connectez vous avec DBeaver ou Datagrip est créée vos Base de Données/Table (*A la création de table si vous devez utiliser Postgis, mettez `CREATE EXTENSION postgis;` avant le `CREATE TABLE ...`*)<br/>
-5/ Il vous suffit alors d'insérer vos tuples ! <br/>
-*PS: Pour quitter le prompt de PostgreSQL, il vous suffit d'écrire `exit`*
+Fait par Romain MILLAN et Cyrille NADAL
