@@ -1,5 +1,6 @@
 # SAE 4.01 - Docker
 Ce dépôt a été créé pour créer toute une architecture sous Docker pour la SAE 4.01 du BUT Informatique de l'IUT de Montpellier/Sète.
+Ce travail est basé sur le travail de Cyrille NADAL, professeur à l'IUT de Montpellier/Sète.
 
 
 ## Parties
@@ -16,6 +17,7 @@ Ce dépôt a été créé pour créer toute une architecture sous Docker pour la
 Suite à ce tutoriel sous Docker, vous pourrez accéder à vos services en utilisant les ports suivants :
  - **Apache:** 8082
  - **PostgreSQL:** 5432
+ - **PGAdmin:** 5050
 
 <br/>
 
@@ -48,6 +50,7 @@ Exemple: DB_NAME=romain
 
 <br/>
 Fichier .env:
+
 ```
 DB_NAME=<VOTRE_NOM>
 PROJECT_NAME=<VOTRE_NOM>
@@ -88,6 +91,22 @@ Ensuite il vous suffit d'utiliser un linux normal pour clone votre repository da
 Maintenant que votre serveur Apache est fonctionnel il vous faut que vous installiez votre serveur de base de données sur le container postgres !<br/>
 
 ### Connexion à PostgreSQL
+
+#### PGAdmin
+Vous pouvez utiliser PGAdmin, un conteneur a déjà été mis en place pour permettre l'accès à PGAdmin. <br/>
+Pour cela, ouvrez votre navigateur et allez à l'adresse `127.0.0.1:5050`. <br/>
+Une fois sur l'interface de PGAdmin, vous devez ajouter un serveur. Cependant, vous devez récupérer **l'adresse IP** de votre conteneur. Pour récupérer l'adresse, vous devez faire : <br/>
+`docker ps` *Puis récupere l'identifiant du container PostgreSQL* <br/>
+`docker inspect <IDENTIFIANT_CONTAINER_POSTGRES>` *Et récupérer l'adresse IP (`IPAddress`)* <br/><br/>
+
+Une fois que vous avez votre adresse IP du container, ouvre PGAdmin puis `Ajouter un nouveau serveur` <br/>
+Ajouter un nom, puis allez dans `Connection` <br/>
+Dans `Host name/address` mettez l'addresse IP que vous avez récupérer plus tôt <br/>
+Enfin dans `Username` et `Password` mettez vos identifiant de connection à PostgreSQL <br/>
+Voila vous êtes sur l'interface administrateur de PostgreSQL <br/>
+(*PS: Les identifiants de base de PostgreSQL sont `postgres:changeme` *)
+
+#### DBeaver et Datagrip
 Pour la connexion à PostgreSQL, vous devez ouvrir DBeaver ou Datagrip et rentrer les identifiants de connexion suivants:
 
 ```
@@ -107,5 +126,5 @@ Pour la SAÉ, il vous est demandé d'installer l'extension PostGIS, pour faire c
 2/ Mettre à jour la machine (`apt-get update` et `apt-get upgrade`)<br/>
 3/ Installer PostGIS avec la commande `apt-get install postgis`<br/>
 4/ Connectez vous avec DBeaver ou Datagrip est créée vos Base de Données/Table (*A la création de table si vous devez utiliser Postgis, mettez `CREATE EXTENSION postgis;` avant le `CREATE TABLE ...`*)<br/>
-5/ Il vous suffit alors d'insérer vos tuples !<br/>
+5/ Il vous suffit alors d'insérer vos tuples ! <br/>
 *PS: Pour quitter le prompt de PostgreSQL, il vous suffit d'écrire `exit`*
