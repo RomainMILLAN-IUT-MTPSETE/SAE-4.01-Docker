@@ -95,5 +95,6 @@ Une fois arriver sur le serveur de Base de Données il vous suffira de crée un 
 Pour la SAÉ, il vous est demander d'installer l'extension Postgres qui se nomme PostGIS, pour faire ceci il vous suffit de suivre les instruction suivantes:
 
 1/ Connecter vous au bash de la VM postgres (`docker exec -it <ID_POSTGRES> bash`).
-2/ Mettre à jour la machine (`apt update` et `apt upgrade`)
-3/ 
+2/ Mettre à jour la machine (`apt-get update` et `apt-get upgrade`)
+3/ Installer PostGis avec la commande `apt-get install postgis`
+4/
