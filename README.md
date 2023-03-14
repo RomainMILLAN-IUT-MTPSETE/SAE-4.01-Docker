@@ -1,6 +1,6 @@
 # Docker - TP2
 Ce dépôt à était crée pour le TP 2 du cours de Virtualisation.<br/>
-Dépôt crée par Romain MILLAN, Geoffrey PIERRE et alexis CAMPS
+Dépôt crée par Romain MILLAN, Geoffrey PIERRE et Alexis CAMPS
 
 <br/>
 
@@ -249,4 +249,4 @@ Database: postgres
 
 <br/><br/><br/>
 
-Fait par Romain MILLAN et Geoffrey PIERRE
+Fait par Romain MILLAN, Geoffrey PIERRE et Alexis CAMPS
