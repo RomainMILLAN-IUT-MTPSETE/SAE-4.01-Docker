@@ -75,6 +75,8 @@ networks:
 ```
 Crée un network nomée postgres avec le driver bridge.<br/>
 
+<br/>
+
 ### Build et Run des containers
 Pour éxécuter le tp il vous suffit d'utiliser les commandes suivantes: <br/>
 - `docker compose build`<br/>
