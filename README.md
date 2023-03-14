@@ -23,10 +23,10 @@ Vous pouvez vous rendre sur le site http://localhost:8082/ pour consulter le ré
 Crée par Romain MILLAN et Pierre GEOFFREY.
 
 <br/>
-
-## Pour compléter
-
 <br/>
+<br/>
+
+# Pour compléter
 
 ## Parties
    - 1/ Informations importantes
