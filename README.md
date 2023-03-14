@@ -15,11 +15,12 @@ Vous pouvez donc constater que les 3 container (Apache, PostgreSQL avec Postgis,
 - `docker ps`<br/>
 
 <br/>
-Vous pouvez vous rendre sur le site `http://localhost:8082/` pour consulter le résultat.
+
+Vous pouvez vous rendre sur le site http://localhost:8082/ pour consulter le résultat.
 
 <br/>
 <br/>
-*Crée par Romain MILLAN et Pierre GEOFFREY.*
+Crée par Romain MILLAN et Pierre GEOFFREY.
 
 <br/>
 
