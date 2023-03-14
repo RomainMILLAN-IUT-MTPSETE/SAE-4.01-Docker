@@ -4,6 +4,29 @@ Dépôt crée par Romain MILLAN et Geoffrey PIERRE
 
 <br/>
 
+## Pour répondre au TP
+Pour éxécuter le tp il vous suffit d'utiliser les commandes suivantes: <br/>
+- `docker compose build`<br/>
+- `docker compose up -d`<br/>
+
+<br/>
+
+Vous pouvez donc constater que les 3 container (Apache, PostgreSQL avec Postgis, PGAdmin) sont lancée. Vous pouvez consulter le résultat avec la commande:<br/>
+- `docker ps`<br/>
+
+<br/>
+Vous pouvez vous rendre sur le site `http://localhost:8082/` pour consulter le résultat.
+
+<br/>
+<br/>
+*Crée par Romain MILLAN et Pierre GEOFFREY.*
+
+<br/>
+
+## Pour compléter
+
+<br/>
+
 ## Parties
    - 1/ Informations importantes
    - 2/ Prérequis
