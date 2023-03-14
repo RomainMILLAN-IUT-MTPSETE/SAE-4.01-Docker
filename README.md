@@ -5,6 +5,77 @@ Dépôt crée par Romain MILLAN et Geoffrey PIERRE
 <br/>
 
 ## Pour répondre au TP
+
+### Docker Compose & Dockerfile
+#### Docker Compose
+Dans le docker compose nous avons mis en place 3 container différents qui se nomment <br/>
+- 'rmgp_apache': Serveur apache<br/>
+- 'rmgp_postgres': Serveur postgres<br/>
+- 'rmgp_pgadmin': Serveur pgadmin<br/>
+<br/>
+
+Dans le container 'rmgp_apache' et 'rmgp_postgres' nous avons utilisée des Dockerfile pour crée les container au contraire du container 'rmgp_pgadmin' nous avons utiliser directement l'image `dpage/pgadmin4`.
+<br/>
+
+##### rmgp_apache
+```Docker
+build: docker/apache //Utilise le fichier Dockerfile contenue dans le dossier docker/apache
+container_name: rmgp_apache //Nom du container
+volumes: //Liste les volumes
+ - ./web_rmgp:/var/www/html:cached //Redirige le dossier 'web_rmgp' vers '/var/www/html'
+ - ./docker/apache/sites_enabled:/etc/apache2/sites_enabled //Fichier config
+ - ./docker/php/custom-php.ini:/use/local/etc/php/conf.d/custom-php.ini //Fichier config
+environment: //Données environement
+    max_execution_time: 2000
+depends_on: //Veut dire que le container dépend du container 'postgres'
+ - postgres
+ports: //Initialise le port
+ - "8082:80" //Le port 80 redirection vers 8082
+```
+
+##### rmgp_postgres
+```
+build: docker/postgres //Utilise le fichier Dockerfile contenue dans le dossier docker/postgres
+container_name: rmgp_postgres //Nom du container
+environment: //Données environement
+    POSTGRES_USER: ${POSTGRES_USER:-postgres}
+    POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+    PGDATA: /data/postgres
+volumes: //Liste les volumes
+    - postgres:/data/postgres //Les données de postgres viendrons directement dans postgres
+ports: //Initialise le port
+    - "5432:5432" //Port 5432 vers 5432
+networks: //Met le container dans le network nomée 'postgres'
+    - postgres
+restart: unless-stopped //Restart dès que le container crash
+```
+
+##### rmgp_pgadmin
+```
+container_name: rmgp_pgadmin //Nom du container
+image: dpage/pgadmin4 //Image utiliser pour le container ici 'dpage/pgadmin4'
+environment: //Données environement
+    PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
+    PGADMIN_DEFAULT_PASSWORD: ${PGADMIN_DEFAULT_PASSWORD:-admin}
+    PGADMIN_CONFIG_SERVER_MODE: 'False'
+volumes: //Liste les volumes
+    - ./pgadmin:/var/lib/pgadmin
+ports: //Initialise le port
+    - "${PGADMIN_PORT:-5050}:80" //Port 80 vers port 5050
+networks: //Met le container dans le network nomée 'postgres'
+    - postgres
+restart: unless-stopped //Restart dès que le container crash
+```
+
+##### networks
+```
+networks:
+  postgres:
+    driver: bridge
+```
+Crée un network nomée postgres avec le driver bridge.<br/>
+
+### Build et Run des containers
 Pour éxécuter le tp il vous suffit d'utiliser les commandes suivantes: <br/>
 - `docker compose build`<br/>
 - `docker compose up -d`<br/>
