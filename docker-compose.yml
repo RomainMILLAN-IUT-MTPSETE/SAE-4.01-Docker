@@ -4,7 +4,7 @@ services:
     build: docker/apache
     container_name: rmgp_apache
     volumes:
-     - ./web_rmgp:${PROJECT_PATH}:cached
+     - ./web_rmgp:/var/www/html:cached
      - ./docker/apache/sites_enabled:/etc/apache2/sites_enabled
      - ./docker/php/custom-php.ini:/use/local/etc/php/conf.d/custom-php.ini
     environment:
