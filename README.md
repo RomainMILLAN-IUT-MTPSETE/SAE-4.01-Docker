@@ -10,9 +10,9 @@ Dépôt crée par Romain MILLAN et Geoffrey PIERRE
 
 #### Docker Compose
 Dans le docker compose nous avons mis en place 3 container différents qui se nomment <br/>
-- 'rmgp_apache': Serveur apache<br/>
-- 'rmgp_postgres': Serveur postgres<br/>
-- 'rmgp_pgadmin': Serveur pgadmin<br/>
+- 'rmgp_apache': Serveur apache (8082)<br/>
+- 'rmgp_postgres': Serveur postgres (5432)<br/>
+- 'rmgp_pgadmin': Serveur pgadmin (5050)<br/>
 <br/>
 
 Dans le container 'rmgp_apache' et 'rmgp_postgres' nous avons utilisée des Dockerfile pour crée les container au contraire du container 'rmgp_pgadmin' nous avons utiliser directement l'image `dpage/pgadmin4`.
