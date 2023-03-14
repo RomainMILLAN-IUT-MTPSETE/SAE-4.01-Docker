@@ -7,6 +7,7 @@ Dépôt crée par Romain MILLAN et Geoffrey PIERRE
 ## Pour répondre au TP
 
 ### Docker Compose & Dockerfile
+
 #### Docker Compose
 Dans le docker compose nous avons mis en place 3 container différents qui se nomment <br/>
 - 'rmgp_apache': Serveur apache<br/>
@@ -74,6 +75,51 @@ networks:
     driver: bridge
 ```
 Crée un network nomée postgres avec le driver bridge.<br/>
+
+<br/>
+
+#### Dockerfile
+
+##### docker/apache
+```
+FROM php:8.2-apache //Initialisation du container avec l'image 'php:8.2-apache'
+
+RUN apt-get update && apt-get install -y nano //Mise à jour du container
+
+#GIT //Installation de git
+RUN apt-get install -y  git
+RUN git config --global user.email "hello@romainmillan.fr"
+RUN git config --global user.name "RomainMLL"
+
+//Installation de pdo et pdo pour postgres
+RUN apt-get install -y libpq-dev \
+    && docker-php-ext-install pdo pdo_pgsql
+
+//Création du dossier /var/run/apache2
+RUN mkdir -p /var/run/apache2/
+
+//Installation de XDEBUG
+#XDEBUG
+WORKDIR /var/www/html/
+
+RUN pecl install xdebug \
+    && docker-php-ext-enable xdebug \
+    && echo "zend_extension=$(find /usr/local/lib/php/extensions/ -name xdebug.so)" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.mode=debug,profile" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.start_with_request=yes" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.client_host=host.docker.internal" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+    && echo "xdebug.client_port=9003" >> /usr/local/etc/php/conf.d/docker-php-ext-xdebug.ini \
+```
+
+##### docker/postgres
+```
+FROM postgres //Initialisation du container avec l'image postgres
+
+RUN apt-get update && apt-get upgrade -y //Mise à jour du container
+
+#POSTGIS
+RUN apt-get install postgis -y //Installation de postgis
+```
 
 <br/>
 
