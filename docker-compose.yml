@@ -2,35 +2,40 @@ version: '3.4'
 services:
   web:
     build: docker/apache
-    container_name: rmgp_apache
+    container_name: waps_apache
     volumes:
-     - ./web_rmgp:/var/www/html:cached
+     - ./waps_rmgp:/var/www/html:cached
      - ./docker/apache/sites_enabled:/etc/apache2/sites_enabled
      - ./docker/php/custom-php.ini:/use/local/etc/php/conf.d/custom-php.ini
     environment:
-      max_execution_time: 2000
+      max_execution_time: 200000
     depends_on:
      - postgres
     ports:
      - "8082:80"
+    networks:
+      postgresnet:
+        ipv4_address: 172.16.238.11
   
   postgres:
     build: docker/postgres
-    container_name: rmgp_postgres
+    container_name: waps_postgres
     environment:
-      POSTGRES_USER: ${POSTGRES_USER:-postgres}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:-postgres}
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
       PGDATA: /data/postgres
     volumes:
        - postgres:/data/postgres
+       - ./postgresdata:/var/lib/postgresql/data
     ports:
       - "5432:5432"
     networks:
-      - postgres
+      postgresnet:
+        ipv4_address: 172.16.238.13
     restart: unless-stopped
   
   pgadmin:
-    container_name: rmgp_pgadmin
+    container_name: waps_pgadmin
     image: dpage/pgadmin4
     environment:
       PGADMIN_DEFAULT_EMAIL: ${PGADMIN_DEFAULT_EMAIL:-pgadmin4@pgadmin.org}
@@ -42,12 +47,16 @@ services:
     ports:
       - "${PGADMIN_PORT:-5050}:80"
     networks:
-      - postgres
+      postgresnet:
+        ipv4_address: 172.16.238.12
     restart: unless-stopped
 
 networks:
-  postgres:
-    driver: bridge
+  postgresnet:
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.16.238.0/24
 
 
 

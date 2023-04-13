@@ -12,8 +12,13 @@ RUN apt-get install -y libpq-dev \
 
 RUN mkdir -p /var/run/apache2/
 
+RUN echo 'max_execution_time = 400' >> /usr/local/etc/php/conf.d/docker-php-maxexectime.ini;
+
 #XDEBUG
 WORKDIR /var/www/html/
+
+#CLONE PROJECT
+RUN git clone https://github.com/RomainMILLAN/SAE-4.01-Waps.git
 
 RUN pecl install xdebug \
     && docker-php-ext-enable xdebug \
